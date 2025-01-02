@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Sidebar from "./Sidebar.jsx";
 import BookingList from "./BookingList.jsx";
 import RoomList from "./RoomList.jsx";
+import CategoryList from "./CategoryList.jsx";
 
 export default function AdminPage() {
   return (
@@ -18,6 +19,11 @@ export default function AdminPage() {
           <Route
             path="/booking"
             element={<BookingList />}
+          />
+
+          <Route
+            path="/categories"
+            element={<CategoryList />}
           />
 
           <Route

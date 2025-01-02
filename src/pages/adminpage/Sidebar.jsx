@@ -23,6 +23,12 @@ export default function Sidebar() {
         >
           Bookings
         </Link>
+        <Link
+          to="/admin/categories"
+          className={`block px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 ${isActive('/categories')}`}
+        >
+          Categories
+        </Link>
       </nav>
     </div>
   );
