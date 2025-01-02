@@ -11,10 +11,6 @@ export default function AdminPage() {
       
       <div className="flex-1 bg-gray-100 p-6 overflow-auto">
         <Routes>
-          <Route
-            path="/rooms"
-            element={<RoomList />}
-          />
 
           <Route
             path="/booking"
@@ -24,6 +20,11 @@ export default function AdminPage() {
           <Route
             path="/categories"
             element={<CategoryList />}
+          />
+
+          <Route
+            path="/rooms"
+            element={<RoomList />}
           />
 
           <Route
