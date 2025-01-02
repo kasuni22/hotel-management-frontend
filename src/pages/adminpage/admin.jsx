@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./Sidebar.jsx";
 import BookingList from "./BookingList.jsx";
+import RoomList from "./RoomList.jsx";
 
 export default function AdminPage() {
   return (
@@ -11,12 +12,7 @@ export default function AdminPage() {
         <Routes>
           <Route
             path="/rooms"
-            element={
-              <div className="text-center">
-                <h1 className="text-2xl font-bold text-gray-800">Rooms</h1>
-                {/* rooms component here */}
-              </div>
-            }
+            element={<RoomList />}
           />
 
           <Route
