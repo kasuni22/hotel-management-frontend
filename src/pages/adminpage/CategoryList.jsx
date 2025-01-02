@@ -1,5 +1,5 @@
 export default function CategoryList() {
-  // Sample category data matching category.js schema
+ 
   const categories = [
       {
           id: 1,
