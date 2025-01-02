@@ -4,6 +4,7 @@ import BookingList from "./BookingList.jsx";
 import RoomList from "./RoomList.jsx";
 import CategoryList from "./CategoryList.jsx";
 import UsersList from "./UserList.jsx";
+import FeedbackList from "./FeedbackList";
 
 export default function AdminPage() {
   return (
@@ -32,9 +33,11 @@ export default function AdminPage() {
             path="/users"
             element={<UsersList />}
           />
-
-
-
+          
+          <Route
+            path="/feedback"
+            element={<FeedbackList />}
+          />
           <Route
             path="/"
             element={
