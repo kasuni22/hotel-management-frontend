@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar.jsx";
 import BookingList from "./BookingList.jsx";
 import RoomList from "./RoomList.jsx";
 import CategoryList from "./CategoryList.jsx";
+import UsersList from "./UserList.jsx";
 
 export default function AdminPage() {
   return (
@@ -26,6 +27,13 @@ export default function AdminPage() {
             path="/rooms"
             element={<RoomList />}
           />
+
+          <Route
+            path="/users"
+            element={<UsersList />}
+          />
+
+
 
           <Route
             path="/"
