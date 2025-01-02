@@ -10,9 +10,10 @@ export default function Sidebar() {
   };
 
   const menuItems = [
-    { path: '/rooms', label: 'Rooms', icon: <FaHotel /> },
+    
     { path: '/booking', label: 'Bookings', icon: <FaBookmark /> },
     { path: '/categories', label: 'Categories', icon: <MdCategory /> },
+    { path: '/rooms', label: 'Rooms', icon: <FaHotel /> },
     { path: '/users', label: 'Users', icon: <FaUser /> },
     { path: '/feedback', label: 'Feedback', icon: <FaComments /> },
     { path: '/gallery', label: 'Gallery Items', icon: <MdPhotoLibrary /> },
