@@ -1,4 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
+import { FaHotel, FaBookmark, FaUser, FaComments } from "react-icons/fa";
+import { MdCategory, MdPhotoLibrary } from "react-icons/md";
 
 export default function Sidebar() {
   const location = useLocation();
@@ -8,12 +10,12 @@ export default function Sidebar() {
   };
 
   const menuItems = [
-    { path: '/rooms', label: 'Rooms' },
-    { path: '/booking', label: 'Bookings' },
-    { path: '/categories', label: 'Categories' },
-    { path: '/users', label: 'Users' },
-    { path: '/feedback', label: 'Feedback' },
-    { path: '/gallery', label: 'Gallery Items' },
+    { path: '/rooms', label: 'Rooms', icon: <FaHotel /> },
+    { path: '/booking', label: 'Bookings', icon: <FaBookmark /> },
+    { path: '/categories', label: 'Categories', icon: <MdCategory /> },
+    { path: '/users', label: 'Users', icon: <FaUser /> },
+    { path: '/feedback', label: 'Feedback', icon: <FaComments /> },
+    { path: '/gallery', label: 'Gallery Items', icon: <MdPhotoLibrary /> },
   ];
 
   return (
@@ -24,8 +26,9 @@ export default function Sidebar() {
           <Link
             key={item.path}
             to={`/admin${item.path}`}
-            className={`block px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 hover:font-bold ${isActive(item.path)}`}
+            className={`flex items-center px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 hover:font-bold ${isActive(item.path)}`}
           >
+            {item.icon && <span className="mr-2">{item.icon}</span>}
             {item.label}
           </Link>
         ))}
