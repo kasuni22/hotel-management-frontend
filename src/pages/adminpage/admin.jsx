@@ -5,6 +5,7 @@ import RoomList from "./RoomList.jsx";
 import CategoryList from "./CategoryList.jsx";
 import UsersList from "./UserList.jsx";
 import FeedbackList from "./FeedbackList";
+import GalleryList from "./GalleryList";
 
 export default function AdminPage() {
   return (
@@ -38,6 +39,12 @@ export default function AdminPage() {
             path="/feedback"
             element={<FeedbackList />}
           />
+
+          <Route
+            path="/gallery"
+            element={<GalleryList />}
+          />
+
           <Route
             path="/"
             element={

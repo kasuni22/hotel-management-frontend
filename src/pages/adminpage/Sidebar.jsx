@@ -13,7 +13,7 @@ export default function Sidebar() {
     { path: '/categories', label: 'Categories' },
     { path: '/users', label: 'Users' },
     { path: '/feedback', label: 'Feedback' },
-    { path: '/gallery', label: 'Gallery' },
+    { path: '/gallery', label: 'Gallery Items' },
   ];
 
   return (
