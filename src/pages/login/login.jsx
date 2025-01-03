@@ -3,73 +3,99 @@ import axios from "axios";
 import "./login.css";
 
 export default function LoginPage() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [error, setError] = useState("")
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        // Debug: Log all environment variables that start with VITE_
         console.log("Environment variables:", import.meta.env);
     }, []);
 
-    function handleLogin() {
-        // Hardcoded fallback URL for development
-        const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
-        console.log("Using backend URL:", backendUrl); // Debug log
+    async function handleLogin() {
+        try {
+            setIsLoading(true);
+            setError("");
+            
+            const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+            console.log("Using backend URL:", backendUrl);
 
-        axios.post(`${backendUrl}/api/users/login`, {
-            email: email,
-            password: password
-        })
-        .then((res) => {
-            console.log(res.data);
-            localStorage.setItem("token", res.data.token);
+            const response = await axios.post(`${backendUrl}/api/users/login`, {
+                email,
+                password
+            });
 
-            if (res.data.user.type === "admin") {
-                window.location.href = "/admin";
-            } else {
-                window.location.href = "/";
-            }
-        })
-        .catch((err) => {
+            localStorage.setItem("token", response.data.token);
+
+            // Animate before redirect
+            const redirectPath = response.data.user.type === "admin" ? "/admin" : "/";
+            window.location.href = redirectPath;
+
+        } catch (err) {
             console.error("Login error:", err);
             setError("Invalid email or password");
-        });
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     return (
-        <div className="w-full h-[100vh] pic-bg flex justify-center items-center">
-            <div className="w-[400px] h-[400px] backdrop-blur-md rounded-lg flex flex-col items-center justify-center relative">
-                <h1 className="text-3xl p-[15px] text-white absolute top-[40px] text-center">Login</h1>
+        <div className="w-full min-h-screen bg-gradient-to-br from-blue-900 via-black to-purple-900 flex justify-center items-center p-4">
+            <div className="w-full max-w-md bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 space-y-6 transform transition duration-500 hover:scale-[1.02]">
+                <div className="text-center">
+                    <h1 className="text-4xl font-bold text-white mb-2">Welcome Back</h1>
+                    <p className="text-gray-300">Please sign in to continue</p>
+                </div>
 
                 {error && (
-                    <div className="text-red-500 mb-4 text-center px-4">
+                    <div className="bg-red-500/10 border border-red-500 text-red-500 px-4 py-3 rounded-lg text-center">
                         {error}
                     </div>
                 )}
 
-                <input 
-                    type="text" 
-                    placeholder="Enter your email address"
-                    className="w-[80%] bg-[#00000000] border-[2px] border-[#f7f8e2] text-white placeholder:text-white h-[50px] px-[5px] mb-[20px]"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)} 
-                />
+                <div className="space-y-4">
+                    <div>
+                        <label className="block text-gray-300 mb-2 text-sm">Email Address</label>
+                        <input 
+                            type="email"
+                            placeholder="Enter your email"
+                            className="w-full px-4 py-3 bg-white/5 border border-gray-600 text-white rounded-lg focus:outline-none focus:border-blue-500 transition duration-300"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
 
-                <input 
-                    type="password" 
-                    placeholder="Enter your password"
-                    className="w-[80%] bg-[#00000000] border-[2px] border-[#f7f8e2] text-white placeholder:text-white h-[50px] px-[5px]"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)} 
-                />
+                    <div>
+                        <label className="block text-gray-300 mb-2 text-sm">Password</label>
+                        <input 
+                            type="password"
+                            placeholder="Enter your password"
+                            className="w-full px-4 py-3 bg-white/5 border border-gray-600 text-white rounded-lg focus:outline-none focus:border-blue-500 transition duration-300"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                </div>
 
-                <button 
-                    className="w-[80%] absolute bottom-[40px] bg-red-500 text-white h-[50px]"
-                    onClick={handleLogin}
-                >
-                    Login
-                </button>
+                <div className="mt-8">
+                    <button 
+                        className={`w-full py-4 rounded-lg font-bold text-white transition-all duration-300
+                            ${isLoading 
+                                ? 'bg-gray-600 cursor-not-allowed' 
+                                : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transform hover:-translate-y-0.5'
+                            }`}
+                        onClick={handleLogin}
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Signing In...' : 'Sign In'}
+                    </button>
+                </div>
+
+                <div className="text-center mt-6">
+                    <a href="#" className="text-sm text-gray-400 hover:text-white transition duration-300">
+                        Forgot your password?
+                    </a>
+                </div>
             </div>
         </div>
     );
