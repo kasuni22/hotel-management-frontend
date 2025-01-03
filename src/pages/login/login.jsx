@@ -27,7 +27,7 @@ export default function LoginPage() {
 
             localStorage.setItem("token", response.data.token);
 
-            // Animate before redirect
+            
             const redirectPath = response.data.user.type === "admin" ? "/admin" : "/";
             window.location.href = redirectPath;
 
@@ -41,7 +41,7 @@ export default function LoginPage() {
 
     return (
         <div className="w-full min-h-screen bg-gradient-to-br from-blue-900 via-black to-purple-900 flex justify-center items-center p-4">
-            <div className="w-full max-w-md bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 space-y-6 transform transition duration-500 hover:scale-[1.02]">
+            <div className="w-full max-w-md bg-white/10 rounded-2xl shadow-2xl p-8 space-y-6 transform transition duration-500 hover:scale-[1.02]">
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-white mb-2">Welcome Back</h1>
                     <p className="text-gray-300">Please sign in to continue</p>
