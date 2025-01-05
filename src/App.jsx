@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TestComponent from "./components/test/test.jsx";
 import LoginPage from "./pages/login/login.jsx";
 import RegisterPage from "./pages/login/register.jsx";
+import CategoriesPage from "./pages/client-page/categories.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/admin/*" element={<AdminPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/categories" element={<CategoriesPage/>}/>
       <Route path="/" element={<HomePage />} />
 
 
