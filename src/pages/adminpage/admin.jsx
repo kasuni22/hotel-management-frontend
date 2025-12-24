@@ -6,12 +6,15 @@ import CategoryList from "./CategoryList.jsx";
 import UsersList from "./UserList.jsx";
 import FeedbackList from "./FeedbackList";
 import GalleryList from "./GalleryList";
+import AddCategoryForm from "./addCategoryForm/addCategoryForm.jsx";
+import EditCategory from "./EditCategory.jsx"
+
 
 export default function AdminPage() {
   return (
     <div className="w-full h-screen flex">
       <Sidebar />
-      
+
       <div className="flex-1 bg-gray-100 p-6 overflow-auto">
         <Routes>
 
@@ -26,6 +29,16 @@ export default function AdminPage() {
           />
 
           <Route
+            path="/categories/edit/:id"
+            element={<EditCategory />}
+          />
+
+          <Route
+            path="/add-category"
+            element={<AddCategoryForm />}
+          />
+
+          <Route
             path="/rooms"
             element={<RoomList />}
           />
@@ -34,7 +47,7 @@ export default function AdminPage() {
             path="/users"
             element={<UsersList />}
           />
-          
+
           <Route
             path="/feedback"
             element={<FeedbackList />}

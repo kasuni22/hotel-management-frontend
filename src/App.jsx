@@ -18,6 +18,7 @@ function App() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/categories" element={<CategoriesPage/>}/>
+      <Route path="/test" element={<TestComponent/>}/>
       <Route path="/" element={<HomePage />} />
 
 
