@@ -28,7 +28,7 @@ export default function RegisterPage() {
 
             const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
-            await axios.post(`${backendUrl}/api/users/register`, formData);
+            await axios.post(`${backendUrl}/api/users/`, formData);
 
             setSuccess("Registration successful! Please log in.");
         } catch (err) {
