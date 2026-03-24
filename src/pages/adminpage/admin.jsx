@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Sidebar from "./Sidebar.jsx";
 import BookingList from "./BookingList.jsx";
 import RoomList from "./RoomList.jsx";
@@ -8,9 +8,38 @@ import FeedbackList from "./FeedbackList";
 import GalleryList from "./GalleryList";
 import AddCategoryForm from "./addCategoryForm/addCategoryForm.jsx";
 import EditCategory from "./EditCategory.jsx"
-
+import AddRoom from "./AddRoom.jsx";
+import EditRoom from "./EditRoom.jsx";
 
 export default function AdminPage() {
+  let isAdmin = false;
+
+  try {
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Extract the payload (middle segment) from the JWT
+      const payloadBase64 = token.split('.')[1];
+      // Convert Base64Url schema to standard Base64 string bounds
+      const base64 = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
+      // Decode with atob() and parse back to JSON Object
+      const decodedPayload = JSON.parse(atob(base64));
+
+      const currentTime = Date.now() / 1000;
+
+      if (decodedPayload.exp && decodedPayload.exp < currentTime) {
+        localStorage.removeItem("token");
+      } else if (decodedPayload.type === "admin") {
+        isAdmin = true;
+      }
+    }
+  } catch (error) {
+    console.error("Token decomposition failed:", error);
+  }
+
+  if (!isAdmin) {
+    return <Navigate to="/login" replace />;
+  }
+
   return (
     <div className="w-full h-screen flex">
       <Sidebar />
@@ -36,6 +65,16 @@ export default function AdminPage() {
           <Route
             path="/add-category"
             element={<AddCategoryForm />}
+          />
+
+          <Route
+            path="/add-room"
+            element={<AddRoom />}
+          />
+
+          <Route
+            path="/edit-room/:roomId"
+            element={<EditRoom />}
           />
 
           <Route

@@ -10,9 +10,18 @@ export default function AddCategoryForm() {
   const [features, setFeatures] = useState("")
   const [description, setDescription] = useState("")
   const [image, setImage] = useState("")
+  const [isLoading, setIsLoading] = useState(false) // ✅ NEW
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    const token = localStorage.getItem("token")
+    if (!token) {
+      alert("Authentication error: No login token found.")
+      return
+    }
+
+    setIsLoading(true) // ✅ start loading
 
     const newCategory = {
       name,
@@ -23,7 +32,9 @@ export default function AddCategoryForm() {
     }
 
     axios
-      .post(import.meta.env.VITE_BACKEND_URL + "/api/category", newCategory)
+      .post(import.meta.env.VITE_BACKEND_URL + "/api/category", newCategory, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       .then(() => {
         alert("Category added successfully")
         navigate("/admin/categories")
@@ -31,6 +42,9 @@ export default function AddCategoryForm() {
       .catch((err) => {
         console.error(err)
         alert("Failed to add category")
+      })
+      .finally(() => {
+        setIsLoading(false) // ✅ stop loading
       })
   }
 
@@ -105,11 +119,18 @@ export default function AddCategoryForm() {
           />
         </div>
 
+        {/* 🔵 BUTTON WITH LOADER */}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+          disabled={isLoading}
+          className={`w-full flex justify-center items-center gap-2 py-2 rounded text-white transition
+            ${isLoading ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}
+          `}
         >
-          Add Category
+          {isLoading && (
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          )}
+          <span>{isLoading ? "Adding..." : "Add Category"}</span>
         </button>
       </form>
     </div>

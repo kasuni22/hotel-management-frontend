@@ -1,34 +1,78 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
   
 export default function CategoriesPage() {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const [categories, setCategories] = useState([])
-  const [categoriesIsLoaded, setCategoriesIsLoaded] = useState(false)
-
-  useEffect(
-    () => {
-        if(!categoriesIsLoaded){
-      axios.get(import.meta.env.VITE_BACKEND_URL+"/api/category")
-      .then((res)=>{
-        setCategories(res.data.categories)
-        setCategoriesIsLoaded(true)
+  useEffect(() => {
+    axios.get(import.meta.env.VITE_BACKEND_URL + "/api/category")
+      .then((res) => {
+        setCategories(res.data.categories);
+        setLoading(false);
       })
-    }
-    
-  },[categoriesIsLoaded]
-)
+      .catch((err) => {
+        setError("Failed to load categories. Please try again later.");
+        setLoading(false);
+        console.error(err);
+      });
+  }, []);
 
-function deleteItem(name){
-    
-    axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/category/"+name, {
-      headers: {
-        Authorization: "Bearer " +localStorage.getItem
-        ("token")
-      }
-    })
-    .then((res)=>{
-        setCategoriesIsLoaded(false)
-    })
-    
-}}
+  if (loading) {
+    return <div className="text-center mt-20 text-xl font-semibold">Loading Categories...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center mt-20 text-red-600 font-semibold">{error}</div>;
+  }
+
+  return (
+    <div className="w-full p-8 bg-gray-50 min-h-screen">
+      <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">Available Room Categories</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {categories.map((cat) => (
+          <div key={cat._id} className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+            {cat.image ? (
+              <img src={cat.image} className="w-full h-48 object-cover" alt={cat.name} />
+            ) : (
+              <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500">No Image</div>
+            )}
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-gray-800">{cat.name}</h2>
+                <span className="text-xl font-bold text-blue-600">Rs. {cat.price}</span>
+              </div>
+              <p className="text-gray-600 mb-4 h-16 overflow-hidden">{cat.description}</p>
+              
+              <div className="mb-4">
+                <h3 className="font-semibold text-gray-700 text-sm mb-2">Features:</h3>
+                <div className="flex flex-wrap gap-2">
+                  {cat.features?.map((feature, idx) => (
+                    <span key={idx} className="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full border border-blue-200">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <button 
+                onClick={() => navigate('/rooms/' + cat.name)}
+                className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+              >
+                View Rooms
+              </button>
+            </div>
+          </div>
+        ))}
+        {categories.length === 0 && (
+            <div className="col-span-full text-center text-gray-500 p-10 bg-white rounded-lg shadow">
+                No categories available at the moment.
+            </div>
+        )}
+      </div>
+    </div>
+  );
+}

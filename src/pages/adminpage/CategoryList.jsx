@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 export default function CategoryList() {
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -21,6 +22,7 @@ export default function CategoryList() {
       })
       .catch((err) => {
         console.log(err)
+        setError("Failed to fetch categories")
         setLoading(false)
       })
   }
@@ -30,8 +32,11 @@ export default function CategoryList() {
       return
     }
 
+    const token = localStorage.getItem("token")
     axios
-      .delete(import.meta.env.VITE_BACKEND_URL + `/api/category/${id}`)
+      .delete(import.meta.env.VITE_BACKEND_URL + `/api/category/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       .then(() => {
         alert("Category deleted successfully")
         fetchCategories()
@@ -43,7 +48,11 @@ export default function CategoryList() {
   }
 
   if (loading) {
-    return <div className="text-center mt-10">Loading...</div>
+    return <div className="text-center mt-10 font-semibold">Loading Categories...</div>
+  }
+
+  if (error) {
+    return <div className="text-center mt-10 text-red-600 font-bold">{error}</div>
   }
 
   function handlePlusClik() {

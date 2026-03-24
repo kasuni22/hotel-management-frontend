@@ -7,6 +7,9 @@ export default function EditCategory() {
   const { id } = useParams()
   const navigate = useNavigate()
 
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
+
   const [form, setForm] = useState({
     name: "",
     price: "",
@@ -16,8 +19,17 @@ export default function EditCategory() {
   })
 
   useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (!token) {
+      setError("No authentication token found.")
+      setIsLoading(false)
+      return
+    }
+
     axios
-      .get(import.meta.env.VITE_BACKEND_URL + `/api/category/${id}`)
+      .get(import.meta.env.VITE_BACKEND_URL + `/api/category/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       .then((res) => {
         const c = res.data.category
         setForm({
@@ -27,6 +39,12 @@ export default function EditCategory() {
           description: c.description,
           image: c.image
         })
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        console.error(err)
+        setError("Failed to load category data.")
+        setIsLoading(false)
       })
   }, [id])
 
@@ -37,15 +55,35 @@ export default function EditCategory() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    const token = localStorage.getItem("token")
+    if (!token) {
+      alert("Authentication error: No login token found.")
+      return
+    }
+
     axios
       .put(import.meta.env.VITE_BACKEND_URL + `/api/category/${id}`, {
         ...form,
         features: form.features.split(",").map(f => f.trim())
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
       })
       .then(() => {
         alert("Category updated successfully")
         navigate("/admin/categories")
       })
+      .catch((err) => {
+        console.error(err)
+        alert("Failed to update category")
+      })
+  }
+
+  if (isLoading) {
+    return <div className="text-center mt-20 text-xl font-semibold">Loading Category Data...</div>
+  }
+
+  if (error) {
+    return <div className="text-center mt-20 text-red-600 font-bold">{error}</div>
   }
 
   return (

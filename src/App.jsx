@@ -7,6 +7,7 @@ import TestComponent from "./components/test/test.jsx";
 import LoginPage from "./pages/login/login.jsx";
 import RegisterPage from "./pages/login/register.jsx";
 import CategoriesPage from "./pages/client-page/categories.jsx";
+import CategoryRooms from "./pages/client-page/CategoryRooms.jsx";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <Route path="/admin/*" element={<AdminPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/categories" element={<CategoriesPage/>}/>
+      <Route path="/categories" element={<CategoriesPage/>} />
+      <Route path="/rooms/:category" element={<CategoryRooms />} />
       <Route path="/test" element={<TestComponent/>}/>
       <Route path="/" element={<HomePage />} />
 
