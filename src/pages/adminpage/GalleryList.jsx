@@ -103,7 +103,7 @@ export default function GalleryList() {
                 <div className="text-red-600 font-bold text-xl">{error}</div>
                 <button 
                     onClick={fetchGalleryItems}
-                    className="mt-4 bg-red-100 text-red-700 px-4 py-2 rounded shadow hover:bg-red-200 font-semibold transition"
+                    className="mt-4 bg-[#C9A86C] text-[#3D1C3A] px-4 py-2 rounded shadow hover:opacity-80 font-semibold transition"
                 >
                     Retry API Request
                 </button>
@@ -119,7 +119,7 @@ export default function GalleryList() {
                 </h2>
                 <button 
                     onClick={() => setFormVisible(!formVisible)}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 shadow flex items-center gap-2 font-semibold"
+                    className="bg-[#C9A86C] text-[#3D1C3A] px-4 py-2 rounded-md hover:opacity-80 transition duration-300 shadow flex items-center gap-2 font-semibold"
                 >
                     <FaPlus /> {formVisible ? "Close Drop Form" : "Add New Image"}
                 </button>
@@ -127,8 +127,8 @@ export default function GalleryList() {
 
             {/* Inline Add Image Form */}
             {formVisible && (
-                <div className="mb-8 bg-white p-6 rounded-lg shadow-md border-t-4 border-blue-600 animation-fade-in transition-all">
-                    <h3 className="text-lg font-bold mb-4">Upload New Gallery Asset</h3>
+                <div className="mb-8 bg-white p-6 rounded-lg shadow-md border-t-4 border-[#C9A86C] animation-fade-in transition-all">
+                    <h3 className="text-lg font-bold mb-4 text-[#3D1C3A]">Upload New Gallery Asset</h3>
                     <form onSubmit={handleAddImage} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label className="block text-sm font-semibold text-gray-600 mb-1">Image Title</label>
@@ -137,7 +137,7 @@ export default function GalleryList() {
                                 name="name" 
                                 value={formData.name} 
                                 onChange={handleInputChange} 
-                                className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-500 outline-none" 
+                                className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none" 
                                 placeholder="Luxury Suite View"
                             />
                         </div>
@@ -149,7 +149,7 @@ export default function GalleryList() {
                                 name="image" 
                                 value={formData.image} 
                                 onChange={handleInputChange} 
-                                className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-500 outline-none" 
+                                className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none" 
                                 placeholder="https://..."
                             />
                         </div>
@@ -159,7 +159,7 @@ export default function GalleryList() {
                                 name="description" 
                                 value={formData.description} 
                                 onChange={handleInputChange} 
-                                className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-500 outline-none" 
+                                className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none" 
                                 placeholder="Describe the image location..."
                                 rows="2"
                             />
@@ -168,7 +168,7 @@ export default function GalleryList() {
                             <button 
                                 type="submit" 
                                 disabled={isSubmitting}
-                                className={`px-6 py-2 rounded-lg font-semibold text-white transition-colors duration-300 shadow ${isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'}`}
+                                className={`px-6 py-2 rounded-lg font-semibold transition-colors duration-300 shadow ${isSubmitting ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-[#3D1C3A] text-[#C9A86C] hover:opacity-80'}`}
                             >
                                 {isSubmitting ? "Uploading Element..." : "Save Image to Gallery"}
                             </button>
@@ -193,10 +193,9 @@ export default function GalleryList() {
                                     onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Invalid+Image'; }}
                                     className="w-full h-full object-cover"
                                 />
-                                {/* Overlay Deletion Logic */}
                                 <button 
                                     onClick={() => handleDelete(item._id)}
-                                    className="absolute top-2 right-2 bg-red-600 text-white p-2 text-sm rounded-full shadow hover:bg-red-700 opacity-0 group-hover:opacity-100 transition duration-300"
+                                    className="absolute top-2 right-2 bg-[#6B3F68] text-[#F0E6D3] p-2 text-sm rounded-full shadow hover:opacity-80 opacity-0 group-hover:opacity-100 transition duration-300"
                                     title="Delete Image"
                                 >
                                     <FaTrash />

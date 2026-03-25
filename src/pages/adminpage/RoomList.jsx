@@ -58,7 +58,7 @@ export default function RoomList() {
   if (isLoading) {
       return (
           <div className="w-full flex justify-center items-center py-20">
-              <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-12 h-12 border-4 border-[#C9A86C] border-t-transparent rounded-full animate-spin"></div>
               <span className="ml-4 flex text-lg font-semibold text-gray-700">Loading Rooms...</span>
           </div>
       );
@@ -70,7 +70,7 @@ export default function RoomList() {
               <div className="text-red-600 font-bold text-xl">{error}</div>
               <button 
                   onClick={fetchRooms}
-                  className="mt-4 bg-red-100 text-red-700 px-4 py-2 rounded shadow hover:bg-red-200"
+                  className="mt-4 bg-[#C9A86C] text-[#3D1C3A] px-4 py-2 rounded shadow hover:opacity-80 font-semibold"
               >
                   Retry API Request
               </button>
@@ -84,7 +84,7 @@ export default function RoomList() {
               <h2 className="text-2xl font-bold">Room List</h2>
               <button 
                   onClick={() => navigate('/admin/add-room')}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300"
+                  className="bg-[#C9A86C] text-[#3D1C3A] font-bold px-4 py-2 rounded-md hover:opacity-80 transition duration-300"
               >
                   Add New Room
               </button>
@@ -92,16 +92,16 @@ export default function RoomList() {
 
           <div className="overflow-x-auto">
               <table className="min-w-full bg-white rounded-lg overflow-hidden">
-                  <thead className="bg-gray-100">
+                  <thead className="bg-[#3D1C3A] text-[#F0E6D3]">
                       <tr>
-                          <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Room ID</th>
-                          <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Category</th>
-                          <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Max Guests</th>
-                          <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Available</th>
-                          <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Photos</th>
-                          <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Special Description</th>
-                          <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Notes</th>
-                          <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Actions</th>
+                          <th className="px-6 py-3 text-left text-sm font-semibold">Room ID</th>
+                          <th className="px-6 py-3 text-left text-sm font-semibold">Category</th>
+                          <th className="px-6 py-3 text-left text-sm font-semibold">Max Guests</th>
+                          <th className="px-6 py-3 text-left text-sm font-semibold">Available</th>
+                          <th className="px-6 py-3 text-left text-sm font-semibold">Photos</th>
+                          <th className="px-6 py-3 text-left text-sm font-semibold">Special Description</th>
+                          <th className="px-6 py-3 text-left text-sm font-semibold">Notes</th>
+                          <th className="px-6 py-3 text-left text-sm font-semibold">Actions</th>
                       </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -140,13 +140,13 @@ export default function RoomList() {
                                   <td className="px-6 py-4 text-sm">
                                       <button 
                                         onClick={() => navigate('/admin/edit-room/' + room.roomId)}
-                                        className="text-blue-600 hover:text-blue-800 mr-2 font-semibold"
+                                        className="bg-[#C9A86C] text-[#3D1C3A] px-3 py-1 rounded mr-2 font-semibold hover:opacity-80"
                                       >
                                         Edit
                                       </button>
                                       <button 
                                         onClick={() => handleDelete(room.roomId)}
-                                        className="text-red-600 hover:text-red-800 font-semibold"
+                                        className="bg-[#6B3F68] text-[#F0E6D3] px-3 py-1 rounded font-semibold hover:opacity-80"
                                       >
                                         Delete
                                       </button>

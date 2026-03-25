@@ -51,7 +51,7 @@ export default function FeedbackList() {
                 <div className="text-red-600 font-bold text-xl">{error}</div>
                 <button 
                     onClick={fetchFeedbacks}
-                    className="mt-4 bg-red-100 text-red-700 px-4 py-2 rounded shadow hover:bg-red-200 font-semibold transition"
+                    className="mt-4 bg-[#C9A86C] text-[#3D1C3A] px-4 py-2 rounded shadow hover:opacity-80 font-semibold transition"
                 >
                     Retry API Request
                 </button>
@@ -65,12 +65,12 @@ export default function FeedbackList() {
         
         <div className="overflow-x-auto mb-4">
           <table className="min-w-full bg-white rounded-lg overflow-hidden shadow">
-            <thead className="bg-gray-100">
+            <thead className="bg-[#3D1C3A] text-[#F0E6D3]">
               <tr>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Name</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Email</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Message</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Date</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold">Name</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold">Email</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold">Message</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold">Date</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">

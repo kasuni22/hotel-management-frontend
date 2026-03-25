@@ -142,7 +142,7 @@ export default function CategoryRooms() {
                     </span>
                     <button 
                         onClick={() => setSelectedRoom(room)}
-                        className="bg-green-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-green-700 shadow-md transition-transform active:scale-95"
+                        className="bg-[#C9A86C] text-[#3D1C3A] px-5 py-2 rounded-lg font-bold hover:bg-[#6B3F68] hover:text-[#F0E6D3] shadow-md transition-transform active:scale-95"
                     >
                         Book Now
                     </button>
@@ -157,7 +157,7 @@ export default function CategoryRooms() {
       {selectedRoom && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm p-4 animate-fade-in transition-all">
               <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden">
-                  <div className="bg-blue-600 p-4 text-white flex justify-between items-center">
+                  <div className="bg-[#3D1C3A] p-4 text-[#F0E6D3] flex justify-between items-center">
                       <h3 className="font-bold text-lg">Book Room {selectedRoom.roomId}</h3>
                       <button onClick={() => setSelectedRoom(null)} className="text-white hover:text-gray-200 text-2xl leading-none">&times;</button>
                   </div>
@@ -227,7 +227,7 @@ export default function CategoryRooms() {
                           <button 
                               type="submit" 
                               disabled={bookingLoading}
-                              className={`px-6 py-2 rounded text-white font-bold shadow-md transition ${bookingLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+                              className={`px-6 py-2 rounded text-white font-bold shadow-md transition ${bookingLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#6B3F68] hover:bg-[#3D1C3A]'}`}
                           >
                               {bookingLoading ? "Processing..." : "Confirm Booking"}
                           </button>

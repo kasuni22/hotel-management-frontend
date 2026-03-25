@@ -91,7 +91,7 @@ export default function EditCategory() {
       <div className="bg-white w-full max-w-3xl rounded-xl shadow-lg p-8">
 
         {/* Header */}
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">
+        <h1 className="text-2xl font-bold text-[#3D1C3A] mb-6">
           ✏️ Edit Category
         </h1>
 
@@ -107,7 +107,7 @@ export default function EditCategory() {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#C9A86C] outline-none"
             />
           </div>
 
@@ -121,7 +121,7 @@ export default function EditCategory() {
               name="price"
               value={form.price}
               onChange={handleChange}
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#C9A86C] outline-none"
             />
           </div>
 
@@ -136,7 +136,7 @@ export default function EditCategory() {
               value={form.features}
               onChange={handleChange}
               placeholder="AC, WiFi, TV"
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#C9A86C] outline-none"
             />
           </div>
 
@@ -150,7 +150,7 @@ export default function EditCategory() {
               value={form.description}
               onChange={handleChange}
               rows="4"
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#C9A86C] outline-none"
             />
           </div>
 
@@ -164,7 +164,7 @@ export default function EditCategory() {
               name="image"
               value={form.image}
               onChange={handleChange}
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#C9A86C] outline-none"
             />
 
             {/* Image Preview */}
@@ -181,7 +181,7 @@ export default function EditCategory() {
           <div className="col-span-2 flex justify-end">
             <button
               type="submit"
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition"
+              className="flex items-center gap-2 bg-[#3D1C3A] text-[#C9A86C] hover:opacity-80 px-6 py-2 rounded-lg font-semibold transition"
             >
               <FaSave />
               Update Category

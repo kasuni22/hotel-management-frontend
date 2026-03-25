@@ -6,7 +6,7 @@ export default function Sidebar() {
   const location = useLocation();
   
   const isActive = (path) => {
-    return location.pathname === `/admin${path}` ? "bg-blue-700" : "";
+    return location.pathname === `/admin${path}` ? "bg-[#6B3F68]" : "";
   };
 
   const menuItems = [
@@ -20,14 +20,14 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="h-screen w-64 bg-blue-600 text-white p-6 flex flex-col">
-      <div className="text-2xl font-bold mb-8">Admin Panel</div>
+    <div className="h-screen w-64 bg-[#3D1C3A] text-[#F0E6D3] p-6 flex flex-col">
+      <div className="text-2xl font-bold mb-8 text-[#C9A86C]">Admin Panel</div>
       <nav className="space-y-4">
         {menuItems.map((item) => (
           <Link
             key={item.path}
             to={`/admin${item.path}`}
-            className={`flex items-center px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 hover:font-bold ${isActive(item.path)}`}
+            className={`flex items-center px-4 py-2 rounded-md hover:bg-[#6B3F68] transition duration-300 hover:text-[#C9A86C] hover:font-bold ${isActive(item.path)}`}
           >
             {item.icon && <span className="mr-2">{item.icon}</span>}
             {item.label}

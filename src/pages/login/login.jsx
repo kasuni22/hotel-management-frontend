@@ -40,11 +40,11 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="w-full min-h-screen bg-gradient-to-br from-blue-900 via-black to-purple-900 flex justify-center items-center p-4">
-            <div className="w-full max-w-md bg-white/10 rounded-2xl shadow-2xl p-8 space-y-6 transform transition duration-500 hover:scale-[1.02]">
+        <div className="w-full min-h-screen bg-[#FAF7F2] flex justify-center items-center p-4">
+            <div className="w-full max-w-md bg-white border border-[#6B3F68] rounded-2xl shadow-2xl p-8 space-y-6 transform transition duration-500 hover:scale-[1.02]">
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold text-white mb-2">Welcome Back</h1>
-                    <p className="text-gray-300">Please sign in to continue</p>
+                    <h1 className="text-4xl font-bold text-[#3D1C3A] mb-2">Welcome Back to Kaelura Grand Hotel</h1>
+                    <p className="text-gray-600">Please sign in to continue</p>
                 </div>
 
                 {error && (
@@ -55,22 +55,22 @@ export default function LoginPage() {
 
                 <div className="space-y-4">
                     <div>
-                        <label className="block text-gray-300 mb-2 text-sm">Email Address</label>
+                        <label className="block text-[#3D1C3A] mb-2 text-sm font-semibold">Email Address</label>
                         <input 
                             type="email"
                             placeholder="Enter your email"
-                            className="w-full px-4 py-3 bg-white/5 border border-gray-600 text-white rounded-lg focus:outline-none focus:border-blue-500 transition duration-300"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:border-[#6B3F68] transition duration-300"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
                     <div>
-                        <label className="block text-gray-300 mb-2 text-sm">Password</label>
+                        <label className="block text-[#3D1C3A] mb-2 text-sm font-semibold">Password</label>
                         <input 
                             type="password"
                             placeholder="Enter your password"
-                            className="w-full px-4 py-3 bg-white/5 border border-gray-600 text-white rounded-lg focus:outline-none focus:border-blue-500 transition duration-300"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:border-[#6B3F68] transition duration-300"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -79,10 +79,10 @@ export default function LoginPage() {
 
                 <div className="mt-8">
                     <button 
-                        className={`w-full py-4 rounded-lg font-bold text-white transition-all duration-300
+                        className={`w-full py-4 rounded-lg font-bold transition-all duration-300
                             ${isLoading 
-                                ? 'bg-gray-600 cursor-not-allowed' 
-                                : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transform hover:-translate-y-0.5'
+                                ? 'bg-gray-400 cursor-not-allowed text-white' 
+                                : 'bg-[#3D1C3A] text-[#C9A86C] hover:bg-[#6B3F68] transform hover:-translate-y-0.5'
                             }`}
                         onClick={handleLogin}
                         disabled={isLoading}

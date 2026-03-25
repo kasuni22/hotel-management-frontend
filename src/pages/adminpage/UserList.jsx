@@ -51,7 +51,7 @@ export default function UsersList() {
                 <div className="text-red-600 font-bold text-xl">{error}</div>
                 <button 
                     onClick={fetchUsers}
-                    className="mt-4 bg-red-100 text-red-700 px-4 py-2 rounded shadow hover:bg-red-200 font-semibold transition"
+                    className="mt-4 bg-[#C9A86C] text-[#3D1C3A] px-4 py-2 rounded shadow hover:opacity-80 font-semibold transition"
                 >
                     Retry API Request
                 </button>
@@ -63,20 +63,20 @@ export default function UsersList() {
         <div className="w-full">
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold">Users List</h2>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 shadow">
+                <button className="bg-[#C9A86C] text-[#3D1C3A] font-bold px-4 py-2 rounded-md hover:opacity-80 transition duration-300 shadow">
                     Add New User
                 </button>
             </div>
 
             <div className="overflow-x-auto mb-4">
                 <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
-                    <thead className="bg-gray-100">
+                    <thead className="bg-[#3D1C3A] text-[#F0E6D3]">
                         <tr>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Identity</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Phone</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">WhatsApp</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Account Type</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Status</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Identity</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Phone</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">WhatsApp</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Account Type</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Status</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">

@@ -63,7 +63,7 @@ export default function CategoryList() {
     <div className="w-full p-5">
       <h1 className="text-2xl font-bold mb-5">Category List</h1>
 
-      <button className="bg-red-900 w-[60px] h-[60px] rounded-full text-2xl text-center flex justify-center items-center fixed bottom-5 right-5"
+      <button className="bg-[#C9A86C] text-[#3D1C3A] w-[60px] h-[60px] rounded-full text-2xl text-center flex justify-center items-center fixed bottom-5 right-5 shadow-lg hover:scale-105 transition"
         onClick={() => {
           handlePlusClik()
         }}>
@@ -72,15 +72,15 @@ export default function CategoryList() {
       </button>
 
       <table className="w-full border border-gray-400">
-        <thead className="bg-gray-200">
+        <thead className="bg-[#3D1C3A] text-[#F0E6D3]">
           <tr>
-            <th className="border p-2">#</th>
-            <th className="border p-2">Name</th>
-            <th className="border p-2">Price</th>
-            <th className="border p-2">Features</th>
-            <th className="border p-2">Description</th>
-            <th className="border p-2">Image</th>
-            <th className="border p-2">Actions</th>
+            <th className="border border-[#6B3F68] p-2">#</th>
+            <th className="border border-[#6B3F68] p-2">Name</th>
+            <th className="border border-[#6B3F68] p-2">Price</th>
+            <th className="border border-[#6B3F68] p-2">Features</th>
+            <th className="border border-[#6B3F68] p-2">Description</th>
+            <th className="border border-[#6B3F68] p-2">Image</th>
+            <th className="border border-[#6B3F68] p-2">Actions</th>
           </tr>
         </thead>
 
@@ -109,6 +109,7 @@ export default function CategoryList() {
                 <div className="flex justify-center gap-3">
                   <button
                     onClick={() => navigate(`/admin/categories/edit/${category._id}`)}
+                    className="bg-[#C9A86C] text-[#3D1C3A] p-2 rounded shadow hover:bg-opacity-80 transition"
                   >
                     <FaEdit />
                   </button>
@@ -116,7 +117,7 @@ export default function CategoryList() {
 
                   <button
                     onClick={() => handleDelete(category._id)}
-                    className="text-red-600 hover:text-red-800 text-lg"
+                    className="bg-[#6B3F68] text-[#F0E6D3] p-2 rounded shadow hover:bg-opacity-80 transition"
                   >
                     <FaTrash />
                   </button>
