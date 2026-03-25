@@ -30,8 +30,8 @@ export default function CategoriesPage() {
   }
 
   return (
-    <div className="w-full p-8 bg-gray-50 min-h-screen">
-      <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">Available Room Categories</h1>
+    <div className="w-full p-8 bg-[#FAF7F2] min-h-screen">
+      <h1 className="text-3xl font-bold mb-8 text-center text-[#3D1C3A]">Available Room Categories</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {categories.map((cat) => (
           <div key={cat._id} className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2">
@@ -42,8 +42,8 @@ export default function CategoriesPage() {
             )}
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold text-gray-800">{cat.name}</h2>
-                <span className="text-xl font-bold text-blue-600">Rs. {cat.price}</span>
+                <h2 className="text-2xl font-bold text-[#3D1C3A]">{cat.name}</h2>
+                <span className="text-xl font-bold text-[#6B3F68]">Rs. {cat.price}</span>
               </div>
               <p className="text-gray-600 mb-4 h-16 overflow-hidden">{cat.description}</p>
               
@@ -60,7 +60,7 @@ export default function CategoriesPage() {
               
               <button 
                 onClick={() => navigate('/rooms/' + cat.name)}
-                className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+                className="w-full bg-[#C9A86C] text-[#3D1C3A] py-2 rounded-lg font-semibold hover:bg-[#6B3F68] hover:text-[#F0E6D3] transition"
               >
                 View Rooms
               </button>

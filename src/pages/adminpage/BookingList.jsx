@@ -67,7 +67,7 @@ export default function BookingList() {
                 <div className="text-red-600 font-bold text-xl">{error}</div>
                 <button 
                     onClick={fetchBookings}
-                    className="mt-4 bg-red-100 text-red-700 px-4 py-2 rounded shadow hover:bg-red-200 font-semibold"
+                    className="mt-4 bg-[#C9A86C] text-[#3D1C3A] px-4 py-2 rounded shadow hover:opacity-80 font-semibold"
                 >
                     Retry API Request
                 </button>
@@ -92,15 +92,15 @@ export default function BookingList() {
 
             <div className="overflow-x-auto">
                 <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
-                    <thead className="bg-gray-100">
+                    <thead className="bg-[#3D1C3A] text-[#F0E6D3]">
                         <tr>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Booking ID</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Room ID</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Email</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Status</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Dates</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Notes</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Actions</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Booking ID</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Room ID</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Email</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Status</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Dates</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Notes</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Actions</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
@@ -129,7 +129,7 @@ export default function BookingList() {
                                         {booking.status !== "approved" && (
                                             <button 
                                                 onClick={() => updateStatus(booking.bookingId, "approved")}
-                                                className="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 font-semibold transition"
+                                                className="bg-[#C9A86C] text-[#3D1C3A] px-3 py-1 rounded text-xs hover:opacity-80 font-semibold transition"
                                             >
                                                 Approve
                                             </button>
@@ -137,7 +137,7 @@ export default function BookingList() {
                                         {booking.status !== "rejected" && (
                                             <button 
                                                 onClick={() => updateStatus(booking.bookingId, "rejected")}
-                                                className="bg-red-500 text-white px-3 py-1 rounded text-xs hover:bg-red-600 font-semibold transition"
+                                                className="bg-[#6B3F68] text-[#F0E6D3] px-3 py-1 rounded text-xs hover:opacity-80 font-semibold transition"
                                             >
                                                 Reject
                                             </button>

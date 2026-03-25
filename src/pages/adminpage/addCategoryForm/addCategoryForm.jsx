@@ -54,7 +54,7 @@ export default function AddCategoryForm() {
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center">
+        <h2 className="text-2xl font-bold mb-4 text-[#3D1C3A] text-center">
           Add New Category
         </h2>
 
@@ -65,7 +65,7 @@ export default function AddCategoryForm() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none"
             required
           />
         </div>
@@ -77,7 +77,7 @@ export default function AddCategoryForm() {
             type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none"
             required
           />
         </div>
@@ -91,7 +91,7 @@ export default function AddCategoryForm() {
             type="text"
             value={features}
             onChange={(e) => setFeatures(e.target.value)}
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none"
             placeholder="AC, WiFi, TV"
           />
         </div>
@@ -102,7 +102,7 @@ export default function AddCategoryForm() {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none"
             rows="3"
           />
         </div>
@@ -114,7 +114,7 @@ export default function AddCategoryForm() {
             type="text"
             value={image}
             onChange={(e) => setImage(e.target.value)}
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none"
             placeholder="https://..."
           />
         </div>
@@ -123,8 +123,8 @@ export default function AddCategoryForm() {
         <button
           type="submit"
           disabled={isLoading}
-          className={`w-full flex justify-center items-center gap-2 py-2 rounded text-white transition
-            ${isLoading ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}
+          className={`w-full flex justify-center items-center gap-2 py-2 rounded transition
+            ${isLoading ? "bg-gray-400 text-white cursor-not-allowed" : "bg-[#3D1C3A] text-[#C9A86C] hover:opacity-80"}
           `}
         >
           {isLoading && (

@@ -86,7 +86,7 @@ export default function AddRoom() {
 
     return (
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow mt-8">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Register New Room Pipeline</h2>
+            <h2 className="text-2xl font-bold mb-6 text-[#3D1C3A] border-b pb-2">Register New Room Pipeline</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
                 
                 <div className="grid grid-cols-2 gap-6">
@@ -98,7 +98,7 @@ export default function AddRoom() {
                             name="roomId" 
                             value={formData.roomId} 
                             onChange={handleChange} 
-                            className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-600 outline-none" 
+                            className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none" 
                             placeholder="e.g. 101 or A-Zone" 
                         />
                     </div>
@@ -110,7 +110,7 @@ export default function AddRoom() {
                             name="category"
                             value={formData.category}
                             onChange={handleChange}
-                            className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-600 outline-none bg-white"
+                            className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none bg-white"
                         >
                             <option value="">-- Select Category --</option>
                             {categories.map((cat) => (
@@ -130,7 +130,7 @@ export default function AddRoom() {
                             name="maxGuests" 
                             value={formData.maxGuests} 
                             onChange={handleChange} 
-                            className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-600 outline-none" 
+                            className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none" 
                         />
                     </div>
                     
@@ -140,7 +140,7 @@ export default function AddRoom() {
                             name="available" 
                             checked={formData.available} 
                             onChange={handleChange} 
-                            className="w-5 h-5 cursor-pointer text-blue-600 rounded border-gray-300 focus:ring-blue-500" 
+                            className="w-5 h-5 cursor-pointer text-blue-600 rounded border-gray-300 focus:ring-[#C9A86C]" 
                         />
                         <label className="ml-2 block text-sm font-semibold text-gray-700 cursor-pointer">
                             Mark as Instantly Available online
@@ -155,7 +155,7 @@ export default function AddRoom() {
                         name="photos" 
                         value={formData.photos} 
                         onChange={handleChange} 
-                        className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-600 outline-none" 
+                        className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none" 
                         placeholder="https://images.example.com/asset1.jpg" 
                     />
                 </div>
@@ -167,7 +167,7 @@ export default function AddRoom() {
                         value={formData.specialDescription} 
                         onChange={handleChange} 
                         rows="3"
-                        className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-600 outline-none" 
+                        className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none" 
                         placeholder="Brief aesthetic marketing text for UI display" 
                     />
                 </div>
@@ -179,7 +179,7 @@ export default function AddRoom() {
                         value={formData.notes} 
                         onChange={handleChange} 
                         rows="2"
-                        className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-600 outline-none" 
+                        className="w-full border p-2 rounded focus:ring-2 focus:ring-[#C9A86C] outline-none" 
                         placeholder="Hidden maintenance or cleaning warnings" 
                     />
                 </div>
@@ -195,7 +195,7 @@ export default function AddRoom() {
                     <button 
                         type="submit" 
                         disabled={isSubmitting}
-                        className={`px-6 py-2 rounded text-white font-bold transition shadow ${isSubmitting ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+                        className={`px-6 py-2 rounded font-bold transition shadow ${isSubmitting ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-[#3D1C3A] text-[#C9A86C] hover:opacity-80'}`}
                     >
                         {isSubmitting ? "Committing Entry..." : "Submit New Room Data"}
                     </button>

@@ -44,7 +44,7 @@ export default function AdminPage() {
     <div className="w-full h-screen flex">
       <Sidebar />
 
-      <div className="flex-1 bg-gray-100 p-6 overflow-auto">
+      <div className="flex-1 bg-[#FAF7F2] p-6 overflow-auto">
         <Routes>
 
           <Route
