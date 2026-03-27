@@ -1,4 +1,5 @@
 import Header from "../../components/header/header.jsx";
+import Footer from "../../components/footer/Footer.jsx";
 
 export default function About() {
   return (
@@ -19,6 +20,7 @@ export default function About() {
           <p className="text-gray-500 italic">More details coming soon.</p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

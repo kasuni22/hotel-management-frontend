@@ -1,6 +1,21 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { jwtDecode } from 'jwt-decode';
+import Header from "../../components/header/header.jsx";
+import Footer from "../../components/footer/Footer.jsx";
+
+const getUserEmail = () => {
+  const token = localStorage.getItem('token');
+  if (!token) return null;
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.email;
+  } catch {
+    return null;
+  }
+};
+
 
 export default function CategoryRooms() {
   const { category } = useParams();
@@ -50,6 +65,12 @@ export default function CategoryRooms() {
         return;
     }
 
+    if (!getUserEmail()) {
+      alert('Please login to make a booking');
+      navigate('/login');
+      return;
+    }
+
     // Validate dates before API execution
     const checkInDate = new Date(formData.checkIn);
     const checkOutDate = new Date(formData.checkOut);
@@ -63,8 +84,9 @@ export default function CategoryRooms() {
     setBookingError(null);
 
     // Payload maps to model fields
-    const payload = {
+    const bookingData = {
         roomId: selectedRoom.roomId,
+        email: getUserEmail(),
         start: formData.checkIn,
         end: formData.checkOut,
         guests: formData.guests,
@@ -72,11 +94,14 @@ export default function CategoryRooms() {
         notes: formData.message // Include notes in case the backend Booking model strictly uses 'notes'
     };
 
-    axios.post(import.meta.env.VITE_BACKEND_URL + "/api/bookings", payload, {
-        headers: { Authorization: `Bearer ${token}` }
+    axios.post(import.meta.env.VITE_BACKEND_URL + "/api/bookings", bookingData, {
+        headers: { 
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
     })
     .then(() => {
-        alert("Booking created successfully!");
+        alert("Booking confirmed successfully!");
         setSelectedRoom(null); // Close modal
         setBookingLoading(false);
         // Reset form
@@ -84,7 +109,7 @@ export default function CategoryRooms() {
     })
     .catch((err) => {
         console.error("Booking Error:", err);
-        setBookingError("Failed to complete booking. Please try again or check your token length.");
+        setBookingError("Booking failed. Please try again.");
         setBookingLoading(false);
     });
   };
@@ -98,8 +123,10 @@ export default function CategoryRooms() {
   }
 
   return (
-    <div className="w-full p-8 bg-gray-50 min-h-screen relative">
-      <div className="flex justify-between items-center mb-8 max-w-7xl mx-auto">
+    <div className="w-full min-h-screen relative flex flex-col bg-gray-50">
+      <Header />
+      <div className="p-8 flex-grow">
+        <div className="flex justify-between items-center mb-8 max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-800">
           Available <span className="text-blue-600">{category}</span> Rooms
         </h1>
@@ -236,6 +263,8 @@ export default function CategoryRooms() {
               </div>
           </div>
       )}
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -3,13 +3,14 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { BedDouble, UtensilsCrossed, Sparkles, Waves, Wifi, Car, ChevronDown } from "lucide-react";
 import Header from "../../components/header/header";
-import hero1 from "../../assets/hero (1).jpg";
-import hero2 from "../../assets/hero (2).jpg";
-import hero3 from "../../assets/hero (3).jpg";
-import aboutImg from "../../assets/about (1).jpg";
-import room1 from "../../assets/room (1).jpg";
-import room2 from "../../assets/room (2).jpg";
-import room3 from "../../assets/room (3).jpg";
+import Footer from "../../components/footer/Footer.jsx";
+import hero1 from "../../assets/hero1.jpg";
+import hero2 from "../../assets/hero2.jpg";
+import hero3 from "../../assets/hero3.jpg";
+import aboutImg from "../../assets/about1.jpg";
+import room1 from "../../assets/room1.jpg";
+import room2 from "../../assets/room2.jpg";
+import room3 from "../../assets/room3.jpg";
 
 export default function HomePage() {
   const [categories, setCategories] = useState([]);
@@ -368,22 +369,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer Placeholder for visual completeness */}
-      <footer className="bg-[#3D1C3A] text-white py-12 px-8">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-              <div className="mb-8 md:mb-0">
-                  <h2 className="text-2xl font-bold text-[#C9A86C]"> Kaelura Grand Hotel</h2>
-                  <p className="text-[#F0E6D3] mt-2 text-sm">Luxury redefined at every step.</p>
-              </div>
-              <div className="flex space-x-6 text-sm font-medium text-[#F0E6D3]">
-                  <Link to="/about" className="hover:text-[#C9A86C] transition">About</Link>
-                  <Link to="/contact" className="hover:text-[#C9A86C] transition">Contact</Link>
-              </div>
-          </div>
-          <div className="max-w-7xl mx-auto border-t border-[#6B3F68] mt-8 pt-8 text-center text-[#F0E6D3] opacity-60 text-xs">
-              &copy; 2024 Kaelura Grand Hotel. All rights reserved.
-          </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

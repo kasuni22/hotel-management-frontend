@@ -10,6 +10,8 @@ import CategoriesPage from "./pages/client-page/categories.jsx";
 import CategoryRooms from "./pages/client-page/CategoryRooms.jsx";
 import AboutPage from "./pages/client-page/About.jsx";
 import ContactPage from "./pages/client-page/Contact.jsx";
+import RoomsPage from './pages/client-page/RoomsPage.jsx';
+import GalleryPage from './pages/client-page/GalleryPage.jsx';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/categories" element={<CategoriesPage/>} />
       <Route path="/rooms/:category" element={<CategoryRooms />} />
+      <Route path="/rooms" element={<RoomsPage />} />
+      <Route path="/gallery" element={<GalleryPage />} />
       <Route path="/test" element={<TestComponent/>}/>
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />

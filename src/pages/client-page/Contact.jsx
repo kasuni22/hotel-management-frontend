@@ -1,4 +1,5 @@
 import Header from "../../components/header/header.jsx";
+import Footer from "../../components/footer/Footer.jsx";
 import { useState } from "react";
 import axios from "axios";
 
@@ -94,6 +95,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
