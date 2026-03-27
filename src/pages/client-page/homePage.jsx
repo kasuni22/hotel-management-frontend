@@ -14,6 +14,7 @@ import room3 from "../../assets/room (3).jpg";
 export default function HomePage() {
   const [categories, setCategories] = useState([]);
   const [gallery, setGallery] = useState([]);
+  const [roomsList, setRoomsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,12 +33,14 @@ export default function HomePage() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const [catRes, galleryRes] = await Promise.all([
+        const [catRes, galleryRes, roomsRes] = await Promise.all([
           axios.get(import.meta.env.VITE_BACKEND_URL + "/api/category"),
-          axios.get(import.meta.env.VITE_BACKEND_URL + "/api/gallery")
+          axios.get(import.meta.env.VITE_BACKEND_URL + "/api/gallery"),
+          axios.get(import.meta.env.VITE_BACKEND_URL + "/api/rooms")
         ]);
         setCategories(catRes.data.categories || []);
         setGallery(galleryRes.data.list || []);
+        setRoomsList(roomsRes.data.rooms || []);
         setLoading(false);
       } catch (err) {
         console.error("Error fetching homepage data:", err);
@@ -223,26 +226,26 @@ export default function HomePage() {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full mb-8">
-            {[
-              { title: "Deluxe Room", img: room1, price: "8,500", desc: "A spacious retreat featuring elegant decor, a premium bed, and panoramic city views for ultimate relaxation." },
-              { title: "Executive Suite", img: room2, price: "15,000", desc: "Our signature suite offering a separate living area, luxurious bathroom amenities, and exclusive lounge access." },
-              { title: "Presidential Villa", img: room3, price: "35,000", desc: "The epitome of grandeur. Expansive living spaces, a private terrace, and personalized butler service." }
-            ].map((room, idx) => (
-              <div key={idx} className="bg-white shadow-xl rounded-none flex flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl">
-                <img src={room.img} alt={room.title} className="w-full h-52 object-cover" />
+            {roomsList.slice(0, 3).map((room, idx) => {
+              const categoryDetails = categories.find(c => c.name === room.category);
+              const roomPrice = categoryDetails ? categoryDetails.price : "N/A";
+              return (
+              <div key={room._id || idx} className="bg-white shadow-xl rounded-none flex flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl">
+                <img src={room.photos || room1} alt={room.category} className="w-full h-52 object-cover" />
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-[#3D1C3A] mb-2">{room.title}</h3>
-                  <p className="text-gray-500 text-sm mb-4 line-clamp-2 flex-grow">{room.desc}</p>
-                  <p className="text-[#C9A86C] font-semibold mb-6">From Rs. {room.price} / night</p>
+                  <h3 className="text-2xl font-bold text-[#3D1C3A] mb-2">{room.category}</h3>
+                  <p className="text-gray-500 text-sm mb-4 line-clamp-2 flex-grow">{room.specialDescription || `Experience the luxury of our ${room.category} space, designed perfectly for your ultimate comfort.`}</p>
+                  {categoryDetails && <p className="text-[#C9A86C] font-semibold mb-6">From Rs. {roomPrice} / night</p>}
                   <Link 
-                    to="/rooms"
+                    to={`/rooms/${room.category}`}
                     className="w-full bg-[#3D1C3A] text-[#C9A86C] py-3 text-center font-bold hover:bg-[#6B3F68] transition-colors mt-auto block"
                   >
                     Book Now
                   </Link>
                 </div>
               </div>
-            ))}
+              )
+            })}
           </div>
 
           <div className="w-full flex justify-end">
@@ -373,9 +376,8 @@ export default function HomePage() {
                   <p className="text-[#F0E6D3] mt-2 text-sm">Luxury redefined at every step.</p>
               </div>
               <div className="flex space-x-6 text-sm font-medium text-[#F0E6D3]">
-                  <a href="#" className="hover:text-[#C9A86C] transition">About</a>
-                  <a href="#" className="hover:text-[#C9A86C] transition">Contact</a>
-                  <a href="#" className="hover:text-[#C9A86C] transition">Booking Terms</a>
+                  <Link to="/about" className="hover:text-[#C9A86C] transition">About</Link>
+                  <Link to="/contact" className="hover:text-[#C9A86C] transition">Contact</Link>
               </div>
           </div>
           <div className="max-w-7xl mx-auto border-t border-[#6B3F68] mt-8 pt-8 text-center text-[#F0E6D3] opacity-60 text-xs">

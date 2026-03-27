@@ -8,6 +8,8 @@ import LoginPage from "./pages/login/login.jsx";
 import RegisterPage from "./pages/login/register.jsx";
 import CategoriesPage from "./pages/client-page/categories.jsx";
 import CategoryRooms from "./pages/client-page/CategoryRooms.jsx";
+import AboutPage from "./pages/client-page/About.jsx";
+import ContactPage from "./pages/client-page/Contact.jsx";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
       <Route path="/rooms/:category" element={<CategoryRooms />} />
       <Route path="/test" element={<TestComponent/>}/>
       <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
 
 
       </Routes>
