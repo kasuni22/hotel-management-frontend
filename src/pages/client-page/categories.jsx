@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/footer/Footer.jsx";
+import Header from "../../components/header/header.jsx";
   
 export default function CategoriesPage() {
   const [categories, setCategories] = useState([]);
@@ -30,8 +32,10 @@ export default function CategoriesPage() {
   }
 
   return (
-    <div className="w-full p-8 bg-[#FAF7F2] min-h-screen">
-      <h1 className="text-3xl font-bold mb-8 text-center text-[#3D1C3A]">Available Room Categories</h1>
+    <div className="w-full bg-[#FAF7F2] min-h-screen flex flex-col">
+      <Header />
+      <div className="p-8 flex-grow">
+        <h1 className="text-3xl font-bold mb-8 text-center text-[#3D1C3A]">Available Room Categories</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {categories.map((cat) => (
           <div key={cat._id} className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2">
@@ -73,6 +77,8 @@ export default function CategoriesPage() {
             </div>
         )}
       </div>
+      </div>
+      <Footer />
     </div>
   );
 }
