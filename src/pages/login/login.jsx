@@ -92,9 +92,9 @@ export default function LoginPage() {
                 </div>
 
                 <div className="text-center mt-6">
-                    <a href="#" className="text-sm text-gray-400 hover:text-white transition duration-300">
-                        Forgot your password?
-                    </a>
+                    <span className="text-sm text-gray-400">
+                        Please contact reception to reset your password.
+                    </span>
                 </div>
             </div>
         </div>
