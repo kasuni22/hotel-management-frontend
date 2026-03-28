@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ImageIcon, Crown, Sparkles, BedDouble } from 'lucide-react';
 import Header from "../../components/header/header.jsx";
 import Footer from "../../components/footer/Footer.jsx";
-import heroImg from "../../assets/hero1.jpg";
+const heroImg = "https://res.cloudinary.com/dgdpuo8og/image/upload/v1774677868/hero1_tbv430.jpg";
 
 export default function GalleryPage() {
   const [galleryItems, setGalleryItems] = useState([]);
@@ -119,7 +119,7 @@ export default function GalleryPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-10 animate-fade-in">
              {galleryItems.map((item, idx) => {
-               const imageSrc = item.image ? `/images/${item.image}` : fallbackImage;
+               const imageSrc = item.image || fallbackImage;
                const title = item.name || "Refined Beauty";
                const desc = item.description || "Experience our elegant spaces and unmatched comfort.";
 
