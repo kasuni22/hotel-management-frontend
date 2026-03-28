@@ -4,13 +4,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { BedDouble, UtensilsCrossed, Sparkles, Waves, Wifi, Car, ChevronDown } from "lucide-react";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/Footer.jsx";
-import hero1 from "../../assets/hero1.jpg";
-import hero2 from "../../assets/hero2.jpg";
-import hero3 from "../../assets/hero3.jpg";
-import aboutImg from "../../assets/about1.jpg";
-import room1 from "../../assets/room1.jpg";
-import room2 from "../../assets/room2.jpg";
-import room3 from "../../assets/room3.jpg";
+const aboutImg = "https://res.cloudinary.com/dgdpuo8og/image/upload/v1774679203/about1_zbdv5z.jpg";
+const hero1 = "https://res.cloudinary.com/dgdpuo8og/image/upload/v1774677868/hero1_tbv430.jpg";
+const hero2 = "https://res.cloudinary.com/dgdpuo8og/image/upload/v1774677886/hero2_uavntd.jpg";
+const hero3 = "https://res.cloudinary.com/dgdpuo8og/image/upload/v1774677866/hero3_iwolsq.jpg";
+const room1 = "https://res.cloudinary.com/dgdpuo8og/image/upload/v1774678033/room1_q9zyfd.jpg";
 
 export default function HomePage() {
   const [categories, setCategories] = useState([]);
@@ -181,6 +179,7 @@ export default function HomePage() {
               src={aboutImg} 
               alt="About Kaelura Grand Hotel" 
               className="relative w-full h-full object-cover border-4 border-[#C9A86C] shadow-xl z-10"
+              loading="lazy"
             />
           </div>
         </div>
@@ -232,7 +231,7 @@ export default function HomePage() {
               const roomPrice = categoryDetails ? categoryDetails.price : "N/A";
               return (
               <div key={room._id || idx} className="bg-white shadow-xl rounded-none flex flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl">
-                <img src={room.photos || room1} alt={room.category} className="w-full h-52 object-cover" />
+                <img src={room.photos || room1} alt={room.category} className="w-full h-52 object-cover" loading="lazy" />
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-2xl font-bold text-[#3D1C3A] mb-2">{room.category}</h3>
                   <p className="text-gray-500 text-sm mb-4 line-clamp-2 flex-grow">{room.specialDescription || `Experience the luxury of our ${room.category} space, designed perfectly for your ultimate comfort.`}</p>
@@ -318,7 +317,7 @@ export default function HomePage() {
                 {categories.slice(0, 3).map((cat) => (
                     <div key={cat._id} className="group bg-[#FAF7F2] rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 border border-gray-100">
                         <div className="relative h-64 overflow-hidden">
-                            <img src={cat.image} className="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt={cat.name} />
+                            <img src={cat.image} className="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt={cat.name} loading="lazy" />
                             <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full shadow-sm font-bold text-[#3D1C3A] text-sm">
                                 From Rs. {cat.price}
                             </div>
@@ -355,7 +354,7 @@ export default function HomePage() {
                 <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
                     {gallery.map((item) => (
                         <div key={item._id} className="relative overflow-hidden rounded-2xl group cursor-pointer shadow-md">
-                            <img src={item.image} alt={item.name} className="w-full h-auto object-cover transition duration-500 group-hover:scale-105" />
+                            <img src={item.image} alt={item.name} className="w-full h-auto object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
                                 <div>
                                     <h4 className="text-white font-bold text-lg">{item.name}</h4>
