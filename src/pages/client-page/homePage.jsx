@@ -71,16 +71,16 @@ export default function HomePage() {
 
         <div className="relative z-10 flex flex-col items-center px-4 w-full mt-10">
           <span className="text-[#C9A86C] tracking-widest text-sm uppercase font-semibold mb-4">
-            KAELURA GRAND HOTEL · EST. 2020
+            KAELURA GRAND HOTEL · COLOMBO, SRI LANKA
           </span>
-          <h1 className="text-5xl lg:text-7xl font-bold text-white mb-2 leading-tight">
-            Where Luxury
+          <h1 className="text-4xl lg:text-6xl font-bold text-white mb-2 leading-tight">
+            Redefine Your Journey, <br className="hidden md:block"/> One Stay at a Time
           </h1>
-          <h1 className="text-5xl lg:text-7xl font-bold text-[#C9A86C] italic font-serif mb-6 leading-tight">
-            Finds its Home
+          <h1 className="text-3xl lg:text-5xl font-bold text-[#C9A86C] italic font-serif mb-6 leading-tight">
+            A Sanctuary of Timeless Elegance
           </h1>
           <p className="text-[#F0E6D3] max-w-xl text-center mb-10 text-lg">
-            An exclusive sanctuary crafted for those who seek more than accommodation — a complete, unforgettable experience.
+            Nestled in the heart of Sri Lanka, where every detail is crafted to perfection and every moment becomes a cherished memory.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
@@ -88,13 +88,13 @@ export default function HomePage() {
               to="/rooms"
               className="bg-[#C9A86C] text-[#3D1C3A] font-semibold px-8 py-3 rounded-none hover:bg-[#b09156] transition-colors"
             >
-              Explore Rooms
+              Discover Our Suites
             </Link>
             <Link
               to="/about"
               className="border border-[#F0E6D3] text-[#F0E6D3] px-8 py-3 rounded-none hover:bg-[#F0E6D3] hover:text-[#3D1C3A] font-semibold transition-colors"
             >
-              Our Story
+              Begin Your Journey
             </Link>
           </div>
         </div>
@@ -128,20 +128,20 @@ export default function HomePage() {
       <section className="w-full bg-[#3D1C3A] py-8 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-[#6B3F68]">
           <div className="flex flex-col items-center py-4 sm:py-0">
-            <span className="text-[#C9A86C] text-3xl font-bold mb-1">50+</span>
-            <span className="text-[#F0E6D3] text-sm font-medium uppercase tracking-wider">Luxury Rooms</span>
-          </div>
-          <div className="flex flex-col items-center py-4 sm:py-0">
-            <span className="text-[#C9A86C] text-3xl font-bold mb-1">5000+</span>
-            <span className="text-[#F0E6D3] text-sm font-medium uppercase tracking-wider">Happy Guests</span>
-          </div>
-          <div className="flex flex-col items-center py-4 sm:py-0">
-            <span className="text-[#C9A86C] text-3xl font-bold mb-1">4.9</span>
-            <span className="text-[#F0E6D3] text-sm font-medium uppercase tracking-wider">Average Rating</span>
-          </div>
-          <div className="flex flex-col items-center py-4 sm:py-0">
             <span className="text-[#C9A86C] text-3xl font-bold mb-1">15+</span>
             <span className="text-[#F0E6D3] text-sm font-medium uppercase tracking-wider">Years of Excellence</span>
+          </div>
+          <div className="flex flex-col items-center py-4 sm:py-0">
+            <span className="text-[#C9A86C] text-3xl font-bold mb-1">1,000+</span>
+            <span className="text-[#F0E6D3] text-sm font-medium uppercase tracking-wider">Guests Welcomed</span>
+          </div>
+          <div className="flex flex-col items-center py-4 sm:py-0">
+            <span className="text-[#C9A86C] text-3xl font-bold mb-1">50+</span>
+            <span className="text-[#F0E6D3] text-sm font-medium uppercase tracking-wider">Luxury Suites</span>
+          </div>
+          <div className="flex flex-col items-center py-4 sm:py-0">
+            <span className="text-[#C9A86C] text-3xl font-bold mb-1">4.9★</span>
+            <span className="text-[#F0E6D3] text-sm font-medium uppercase tracking-wider">Guest Rating</span>
           </div>
         </div>
       </section>
