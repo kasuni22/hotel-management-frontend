@@ -10,6 +10,7 @@ import AddCategoryForm from "./addCategoryForm/addCategoryForm.jsx";
 import EditCategory from "./EditCategory.jsx"
 import AddRoom from "./AddRoom.jsx";
 import EditRoom from "./EditRoom.jsx";
+import DashboardOverview from "./DashboardOverview.jsx";
 
 export default function AdminPage() {
   let isAdmin = false;
@@ -99,12 +100,7 @@ export default function AdminPage() {
 
           <Route
             path="/"
-            element={
-              <div className="text-center">
-                <h1 className="text-2xl font-bold text-gray-800">Welcome to Admin Dashboard</h1>
-                <p className="mt-4 text-gray-600">Select an option from the sidebar to get started.</p>
-              </div>
-            }
+            element={<DashboardOverview />}
           />
 
           <Route
