@@ -1,10 +1,16 @@
-import { Link, useLocation } from "react-router-dom";
-import { FaHotel, FaBookmark, FaUser, FaComments } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaHotel, FaBookmark, FaUser, FaComments, FaSignOutAlt } from "react-icons/fa";
 import { MdCategory, MdPhotoLibrary } from "react-icons/md";
 
 export default function Sidebar() {
   const location = useLocation();
-  
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   const isActive = (path) => {
     return location.pathname === `/admin${path}` ? "bg-[#6B3F68]" : "";
   };
@@ -21,7 +27,12 @@ export default function Sidebar() {
 
   return (
     <div className="h-screen w-64 bg-[#3D1C3A] text-[#F0E6D3] p-6 flex flex-col">
-      <div className="text-2xl font-bold mb-8 text-[#C9A86C]">Admin Panel</div>
+      <div 
+        onClick={() => navigate('/admin')} 
+        className="text-2xl font-bold mb-8 text-[#C9A86C] cursor-pointer hover:opacity-80 transition"
+      >
+        Admin Panel
+      </div>
       <nav className="space-y-4">
         {menuItems.map((item) => (
           <Link
@@ -34,6 +45,12 @@ export default function Sidebar() {
           </Link>
         ))}
       </nav>
+      <button 
+        onClick={handleLogout}
+        className="mt-auto w-full bg-[#C9A86C] text-[#3D1C3A] py-2 px-4 rounded-md font-bold transition duration-300 hover:bg-[#3D1C3A] hover:text-[#C9A86C] border border-[#C9A86C] flex items-center justify-center gap-2"
+      >
+        <FaSignOutAlt /> Logout
+      </button>
     </div>
   );
 }
