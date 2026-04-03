@@ -175,9 +175,6 @@ export default function Header() {
           </div>
         )}
       </header>
-      
-      {/* Spacer to prevent content from hiding behind fixed navbar */}
-      <div className="pt-20"></div>
     </>
   );
 }

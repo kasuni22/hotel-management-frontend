@@ -34,11 +34,11 @@ export default function GalleryPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] flex flex-col font-sans selection:bg-[#C9A86C] selection:text-[#3D1C3A] pt-20">
+    <div className="min-h-screen bg-[#FAF7F2] flex flex-col font-sans selection:bg-[#C9A86C] selection:text-[#3D1C3A]">
       <Header />
 
       {/* Hero Banner */}
-      <div className="relative h-[55vh] md:h-[65vh] w-full flex flex-col items-center justify-center mt-16 md:mt-0 shadow-2xl">
+      <div className="relative h-[55vh] md:h-[65vh] w-full flex flex-col items-center justify-center mt-0 shadow-2xl">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <img src={heroImg} alt="Kaelura Grand Hotel" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-[#3D1C3A]/70 mix-blend-multiply"></div>
