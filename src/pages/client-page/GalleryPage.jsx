@@ -14,6 +14,10 @@ export default function GalleryPage() {
   const fallbackImage = "https://images.unsplash.com/photo-1542314831-c6a4d27ce66f?q=80&w=1000&auto=format&fit=crop";
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     const fetchGallery = async () => {
       try {
         setLoading(true);
@@ -30,7 +34,7 @@ export default function GalleryPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] flex flex-col font-sans selection:bg-[#C9A86C] selection:text-[#3D1C3A]">
+    <div className="min-h-screen bg-[#FAF7F2] flex flex-col font-sans selection:bg-[#C9A86C] selection:text-[#3D1C3A] pt-20">
       <Header />
 
       {/* Hero Banner */}
