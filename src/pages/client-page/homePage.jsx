@@ -351,19 +351,32 @@ export default function HomePage() {
                     <div className="w-12 h-12 border-4 border-[#C9A86C] border-t-transparent rounded-full animate-spin"></div>
                 </div>
             ) : (
-                <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
-                    {gallery.map((item) => (
-                        <div key={item._id} className="relative overflow-hidden rounded-2xl group cursor-pointer shadow-md">
-                            <img src={item.image} alt={item.name} className="w-full h-auto object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
-                                <div>
-                                    <h4 className="text-white font-bold text-lg">{item.name}</h4>
-                                    <p className="text-white/80 text-xs mt-1">{item.description}</p>
+                <>
+                    <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+                        {gallery.slice(0, 4).map((item) => (
+                            <div key={item._id} className="relative overflow-hidden rounded-2xl group cursor-pointer shadow-md">
+                                <img src={item.image} alt={item.name} className="w-full h-auto object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                                    <div>
+                                        <h4 className="text-white font-bold text-lg">{item.name}</h4>
+                                        <p className="text-white/80 text-xs mt-1">{item.description}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                    
+                    <div className="text-center mt-10">
+                        <Link 
+                            to="/gallery"
+                            className="inline-block px-10 py-4 bg-[#3D1C3A] 
+                            text-[#C9A86C] font-bold tracking-widest uppercase 
+                            hover:bg-[#6B3F68] transition duration-300"
+                        >
+                            View Full Gallery
+                        </Link>
+                    </div>
+                </>
             )}
         </div>
       </section>
